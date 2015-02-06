@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
 
     //The main window
     QWidget window;
+    window.setMinimumSize(320,280);
 
     //The Tab Widget
     QTabWidget *tab = new QTabWidget(&window);
@@ -126,6 +127,18 @@ int main(int argc, char *argv[])
         contact->setText("Contact us");
     QPushButton *close = new QPushButton;
         close->setText("Close");
+
+    //Boxes to store tab and close, contact buttons
+        QGroupBox *contactbox = new QGroupBox;
+        QBoxLayout *contactbox_layout = new QBoxLayout(QBoxLayout::LeftToRight);
+            contactbox_layout->addWidget(contact);
+            contactbox_layout->addWidget(close);
+            contactbox->setLayout(contactbox_layout);
+            QGroupBox *globalbox = new QGroupBox(&window);
+        QBoxLayout *globalbox_layout = new QBoxLayout(QBoxLayout::TopToBottom);
+            globalbox_layout->addWidget(tab);
+            globalbox_layout->addWidget(contactbox);
+            globalbox->setLayout(globalbox_layout);
 
 
     window.show();
