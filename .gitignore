@@ -1,0 +1,4 @@
+#Files to ignore in commits
+
+*build*
+*.o
