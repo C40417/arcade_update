@@ -7,6 +7,9 @@
 #include <QTabWidget>
 #include <QLabel>
 #include <QProgressBar>
+#include <QSignalMapper>
+#include <QDesktopServices>
+#include <QUrl>
 
 int main(int argc, char *argv[])
 {
@@ -139,6 +142,20 @@ int main(int argc, char *argv[])
             globalbox_layout->addWidget(tab);
             globalbox_layout->addWidget(contactbox);
             globalbox->setLayout(globalbox_layout);
+
+
+
+
+    //Connections
+
+        //Close
+            QObject::connect(close, SIGNAL(clicked()), qApp, SLOT(quit()));
+
+        //Contact us
+
+        //test
+            QObject::connect(list_dev, SIGNAL(activated(QString)), current, SLOT(setText(QString)));
+
 
 
     window.show();
