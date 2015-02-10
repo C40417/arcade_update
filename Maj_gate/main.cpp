@@ -8,15 +8,14 @@
 #include <QLabel>
 #include <QProgressBar>
 #include <QSignalMapper>
-#include <QDesktopServices>
-#include <QUrl>
+#include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
     QApplication update(argc, argv);
 
     //The main window
-    QWidget window;
+    MainWindow window;
     window.setMinimumSize(320,280);
 
     //The Tab Widget
@@ -29,6 +28,7 @@ int main(int argc, char *argv[])
 
         //Choice liste
         QComboBox *list_upd = new QComboBox(&window);
+            list_upd->addItem("none");
             list_upd->addItem("1.0");
             list_upd->addItem("1.1");
 
@@ -73,8 +73,9 @@ int main(int argc, char *argv[])
             current->setText("1.0");
 
         QComboBox *list_dev = new QComboBox;
-            list_dev->addItem("dev 1");
-            list_dev->addItem("dev 2");
+            list_dev->addItem("none");
+            list_dev->addItem("dev1");
+            list_dev->addItem("dev2");
 
         QGroupBox *current_box = new QGroupBox;
         QBoxLayout *current_layout = new QBoxLayout(QBoxLayout::LeftToRight);
@@ -147,15 +148,22 @@ int main(int argc, char *argv[])
 
 
     //Connections
+        //QSignalMapper *mapper = new QSignalMapper();
 
         //Close
             QObject::connect(close, SIGNAL(clicked()), qApp, SLOT(quit()));
 
         //Contact us
+            QObject::connect(contact, SIGNAL(clicked()), &window, SLOT(showabout()));
 
-        //test
-            QObject::connect(list_dev, SIGNAL(activated(QString)), current, SLOT(setText(QString)));
+        //Update
+            QObject::connect(updatebutton, SIGNAL(clicked()), &window, SLOT(update()));
+            QObject::connect(list_dev, SIGNAL(activated(QString)), &window, SLOT(up_dename(QString)));
+            QObject::connect(list_upd, SIGNAL(activated(QString)), &window, SLOT(up_upname(QString)));
 
+        // Bouton 1
+        //connect(, SIGNAL(clicked()), mapper, SLOT(map()));
+        //mapper->setMapping(bouton1, "http://url1");
 
 
     window.show();
