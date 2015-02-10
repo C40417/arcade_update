@@ -5,15 +5,19 @@
 #include <QDesktopServices>
 #include <QUrl>
 #include <QLabel>
+#include <QProcess>
 
 class MainWindow : public QWidget
 {
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = 0);
+    QLabel labout;
 
+private:
     QString device_name;
     QString update_name;
+    QProcess shell;
 
 signals:
     

@@ -20,19 +20,19 @@ void MainWindow::up_dename(QString s) {
 }
 
 void MainWindow::update() {
-    QString cmd="cp";
+    QString cmd="/bin/bash -c cp";
     QString cmd2="du";
     QString str=" ../updates/v";
     QString str2=" ../";
     QString str3="/";
     QString tmp=cmd+str+update_name+str2+device_name+str3+update_name;
-    QByteArray byte_up=tmp.toUtf8();
-    char* final = byte_up.data();
-    tmp = cmd2+str+update_name;
-    byte_up = tmp.toUtf8();
-    char* tm = byte_up.data();
-    system(tm);
-    std::cout << tm << final << std::endl;
+    QString tm = cmd2+str+update_name;
+    shell.start(tm);
+    shell.waitForFinished(-1);
+    QString stdout = shell.readAllStandardOutput();
+    labout.setMinimumSize(400,400);
+    labout.setText(stdout);
+    labout.show();
     //system(final);
 
 }
