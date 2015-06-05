@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
             list_upd->addItem("none");
             list_upd->addItem("1.0");
             list_upd->addItem("1.1");
+            list_upd->addItem("2.0");
 
         //Separator
         QFrame* separatorv = new QFrame();
@@ -107,8 +108,7 @@ int main(int argc, char *argv[])
             action->setText("Waiting");
 
         //Progress bar
-        QProgressBar *progress = new QProgressBar;
-            progress->setValue(0);
+        window.progress.setValue(0);
 
         //update/cancel button
         QPushButton *updatebutton = new QPushButton;
@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
         //Box
         QBoxLayout *tab3layout = new QBoxLayout(QBoxLayout::TopToBottom);
             tab3layout->addWidget(action);
-            tab3layout->addWidget(progress);
+            tab3layout->addWidget(&(window.progress));
             tab3layout->addWidget(updatebutton);
             boxtab3->setLayout(tab3layout);
 
