@@ -17,6 +17,9 @@ int main(int argc, char *argv[])
     //The main window
     MainWindow window;
     window.setMinimumSize(320,280);
+    window.set_address("lescouet@ssh.tem-tsp.eu:");
+    window.MainWindow::set_src("/home/alexis/1A/gate/maj/");
+    window.MainWindow::set_dest("/home/alexis/1A/gate/maj/devs");
 
     //The Tab Widget
     QTabWidget *tab = new QTabWidget(&window);
@@ -32,6 +35,8 @@ int main(int argc, char *argv[])
             list_upd->addItem("1.0");
             list_upd->addItem("1.1");
             list_upd->addItem("2.0");
+            list_upd->addItem("3.0");
+
 
         //Separator
         QFrame* separatorv = new QFrame();

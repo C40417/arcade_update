@@ -17,12 +17,11 @@ public:
     QProgressBar progress;
 
 private:
+    QString src_dir;
+    QString dst_dir;
     QString device_name;
     QString update_name;
-    QString stdout;
-    int current_taille;
-    QProcess shell;
-    QProcess monitor;
+    QString device_address;
     bool update_finished;
 
 signals:
@@ -34,8 +33,10 @@ public slots:
     void showabout(void);
     void up_upname(QString s);
     void up_dename(QString s);
+    void set_dest(QString s);
+    void set_src(QString s);
+    void set_address(QString s);
     void isfinished(int exitCode, QProcess::ExitStatus exitState);
-    void read_output();
     void update (void);
 
 };
