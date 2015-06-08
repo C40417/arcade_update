@@ -3,7 +3,7 @@ QT += core
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    frontend.cpp
 
 HEADERS += \
-    mainwindow.h
+    frontend.h
