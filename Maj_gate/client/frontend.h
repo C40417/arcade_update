@@ -7,7 +7,6 @@
 #include <QLabel>
 #include <QProcess>
 #include <QProgressBar>
-#include <QApplication>
 #include <QWidget>
 #include <QPushButton>
 #include <QGroupBox>
@@ -16,16 +15,24 @@
 #include <QTabWidget>
 #include <QSignalMapper>
 
+#include "client.h"
+
 class Frontend : public QWidget
 {
     Q_OBJECT
 
 public:
-    Frontend(QWidget *parent = 0);
+    Frontend();
 
 private slots:
+    void contactus();
+    void updevinfo();
+    void update();
+    void displaydevinfo(int state);
 
 private:
+    Client *client;
+
     //The Tab Widget
     QTabWidget *tab;
     //Tab 1 : update choice (list of updates, decription and button to go on a web site or on a documentation)
@@ -62,6 +69,9 @@ private:
 
     //Separator
     QFrame* separatorh;
+
+    //update info button
+    QPushButton *infobutton;
 
     //Description
     QLabel *current_descr;

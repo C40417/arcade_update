@@ -1,9 +1,9 @@
 QT += widgets
 QT += core
+QT += network
 
 SOURCES += \
     main.cpp \
-    frontend.cpp
-
+    server.cpp
 HEADERS += \
-    frontend.h
+    server.h
