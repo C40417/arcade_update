@@ -1,3 +1,25 @@
+/* The MIT License (MIT)
+
+Copyright (c) [2015] [Alexis Lescouet]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. */
+
 #ifndef FRONTEND_H
 #define FRONTEND_H
 
@@ -13,9 +35,10 @@
 #include <QBoxLayout>
 #include <QComboBox>
 #include <QTabWidget>
-#include <QSignalMapper>
+#include <QLineEdit>
 
 #include "client.h"
+#include "textviewer.h"
 
 class Frontend : public QWidget
 {
@@ -29,6 +52,16 @@ private slots:
     void updevinfo();
     void update();
     void displaydevinfo(int state);
+    void loaddevlist();
+    void loadromlist();
+    void connectall();
+
+    void confirmadd();
+    void confirmsuppress();
+    void adddevice();
+    void suppressdevice();
+    void addtimeout();
+    void supprtimeout();
 
 private:
     Client *client;
@@ -40,10 +73,6 @@ private:
     QGroupBox *grouphbox;
 
     QComboBox *list_upd;
-
-    //Separator
-    QFrame* separatorv;
-    QLabel *description;
 
     //"More" Button
     QPushButton *more_desc;
@@ -57,8 +86,9 @@ private:
     QGroupBox *boxtab2;
 
     //labels, device list, and box to store
-    QLabel *lab_current;
-    QLabel *current;
+    TextViewer *current_text;
+    QPushButton *print_current;
+
 
     QComboBox *list_dev;
 
@@ -89,10 +119,28 @@ private:
 
 
     //update/cancel button
+    QPushButton *addrombutton;
     QPushButton *updatebutton;
 
     //Box
     QBoxLayout *tab3layout;
+
+    //Tab4 : Manage device list
+
+    QGroupBox *boxtab4;
+    QGroupBox *hbox42;
+    QGroupBox *hbox41;
+
+    QBoxLayout *boxtab4_layout;
+    QBoxLayout *hbox41_layout;
+    QBoxLayout *hbox42_layout;
+
+    QLineEdit *hbox41_name;
+    QLineEdit *hbox41_addr;
+    QPushButton *hbox41_button;
+
+    QComboBox *hbox42_combo;
+    QPushButton *hbox42_button;
 
     //Contat us button and quit button (not in tabs)
     QPushButton *contact;
